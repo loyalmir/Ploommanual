@@ -990,8 +990,10 @@
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import { getDatabase, ref, set, get } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
-const app = initializeApp({ databaseURL: "https://k-hary-default-rtdb.firebaseio.com/" });
+const app = initializeApp({ apiKey: "AIzaSyDPsFRRO7PCrlTgOv0RWhwZ_Ve0zEcb-6c", authDomain: "k-hary.firebaseapp.com", databaseURL: "https://k-hary-default-rtdb.firebaseio.com", projectId: "k-hary", appId: "1:510579164438:web:54d1c3408a8968aea27c37" });
+try { await signInAnonymously(getAuth(app)); } catch (e) { console.warn("익명 로그인 실패", e); }
 const db = getDatabase(app);
 const DB_PATH = "siksu/teamday";   // 주간 식수(siksu/main)와 분리된 별도 경로
 
